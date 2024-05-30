@@ -114,7 +114,7 @@ def main():
         print("Total enrollment for " + str((i + 2013)) + ": " + str(int(np.nansum(years_3d[i, school.get_row(), :3]))))
     print("Total ten year enrollment: ", int(np.nansum(years_3d[:10, school.get_row(), :3])))
     print("Mean total enrollment over 10 years: ", (int(np.nansum(years_3d[:10, school.get_row(), :3])) // 10))
-    # how to use mask here??
+    # how to use mask here?? check readme
     # enroll_over_500 = (years_3d[:10, school.get_row(), :3] > 500)
     # print("For all enrollments over 500, the median was: ", np.median(years_3d[enroll_over_500]))
 
