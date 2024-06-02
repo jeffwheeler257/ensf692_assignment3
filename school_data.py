@@ -17,28 +17,29 @@ years_2d = np.array([year_2013, year_2014, year_2015, year_2016, year_2017, year
 years_3d = np.array([np.reshape(year, (20, 3)) for year in years_2d])
 
 
-# You may add your own additional classes, functions, variables, etc.
 
+# Class to capture each high school's name, school code and where the school's data is kept in given_data.py
 class HighSchool:
 
+    # Constructor
     def __init__(self, name, code, row):
         self.__name = name
         self.__code = code
         self.__row = row
 
+    # Getter for the name of the HighSchool object
     def get_name(self):
         return self.__name
     
+    # Getter for the code of the HighSchool object
     def get_code(self):
         return self.__code
     
+    # Getter for the data row of the HighSchool object
     def get_row(self):
         return self.__row
-    
-    def print_school(self):
-        print(self.__name, self.__code, self.__row)
 
-
+# Initialize school objects for each high school
 centennial = HighSchool("Centennial High School", "1224", 0)
 robert_thirk = HighSchool("Robert Thirsk School", "1679", 1)
 louise_dean = HighSchool("Louise Dean School", "9626", 2)
@@ -60,10 +61,12 @@ ep_scarlett = HighSchool("Dr. E. P. Scarlett High School", "9858", 17)
 john_g_diefenbaker = HighSchool("John G Diefenbaker High School", "9860", 18)
 lester_b_pearson = HighSchool("Lester B. Pearson High School", "9865", 19)
 
+# list containing all the high school
 high_school_list = [centennial, robert_thirk, louise_dean, queen_elizabeth, forest_lawn, crescent_heights, western_canada, central_memorial, 
                     james_fowler, ernest_manning, william_aberhart, national_sport, henry_wisewood, bowness, lord_beaverbrook, jack_james, 
                     winston_churchill, ep_scarlett, john_g_diefenbaker, lester_b_pearson]
 
+# dictionary containing each high school name as the key and school code as the value
 high_school_dict = {school.get_name():school.get_code() for school in high_school_list}
 
 def main():
@@ -114,9 +117,12 @@ def main():
         print("Total enrollment for " + str((i + 2013)) + ": " + str(int(np.nansum(years_3d[i, school.get_row(), :3]))))
     print("Total ten year enrollment: ", int(np.nansum(years_3d[:10, school.get_row(), :3])))
     print("Mean total enrollment over 10 years: ", (int(np.nansum(years_3d[:10, school.get_row(), :3])) // 10))
-    # how to use mask here?? check readme
-    # enroll_over_500 = (years_3d[:10, school.get_row(), :3] > 500)
-    # print("For all enrollments over 500, the median was: ", np.median(years_3d[enroll_over_500]))
+    years_3d_sub = years_3d[:10, school.get_row(), :3] # subarray to get median over 500
+    enroll_over_500 = (years_3d_sub > 500)
+    if np.any(enroll_over_500):
+        print("For all enrollments over 500, the median was: ", int(np.median(years_3d_sub[enroll_over_500])))
+    else:
+        print("No enrollments over 500.")
 
 
     # Print Stage 3 requirements here
