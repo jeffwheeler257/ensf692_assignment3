@@ -118,7 +118,7 @@ def main():
     print("Total ten year enrollment: ", int(np.nansum(years_3d[:10, school.get_row(), :3])))
     print("Mean total enrollment over 10 years: ", (int(np.nansum(years_3d[:10, school.get_row(), :3])) // 10))
     years_3d_sub = years_3d[:10, school.get_row(), :3] # subarray to get median over 500
-    enroll_over_500 = (years_3d_sub > 500)
+    enroll_over_500 = (years_3d_sub > 500) # masking operation
     if np.any(enroll_over_500):
         print("For all enrollments over 500, the median was: ", int(np.median(years_3d_sub[enroll_over_500])))
     else:
