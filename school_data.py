@@ -21,22 +21,22 @@ years_3d = np.array([np.reshape(year, (20, 3)) for year in years_2d])
 # Class to capture each high school's name, school code and where the school's data is kept in given_data.py
 class HighSchool:
 
-    # Constructor
     def __init__(self, name, code, row):
+        '''Contructor for high school object'''
         self.__name = name
         self.__code = code
         self.__row = row
 
-    # Getter for the name of the HighSchool object
     def get_name(self):
+        '''Returns the name of a HighSchool object'''
         return self.__name
     
-    # Getter for the code of the HighSchool object
     def get_code(self):
+        '''Returns the code of a HighSchool object'''
         return self.__code
     
-    # Getter for the data row of the HighSchool object
     def get_row(self):
+        '''Returns the data row of a HighSchool object'''
         return self.__row
 
 # Initialize school objects for each high school
@@ -61,7 +61,7 @@ ep_scarlett = HighSchool("Dr. E. P. Scarlett High School", "9858", 17)
 john_g_diefenbaker = HighSchool("John G Diefenbaker High School", "9860", 18)
 lester_b_pearson = HighSchool("Lester B. Pearson High School", "9865", 19)
 
-# list containing all the high school
+# list containing all the high schools
 high_school_list = [centennial, robert_thirk, louise_dean, queen_elizabeth, forest_lawn, crescent_heights, western_canada, central_memorial, 
                     james_fowler, ernest_manning, william_aberhart, national_sport, henry_wisewood, bowness, lord_beaverbrook, jack_james, 
                     winston_churchill, ep_scarlett, john_g_diefenbaker, lester_b_pearson]
